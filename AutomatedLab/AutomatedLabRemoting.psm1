@@ -1,4 +1,4 @@
-﻿#region New-LabPSSession
+#region New-LabPSSession
 function New-LabPSSession
 {
     param (
@@ -1191,8 +1191,8 @@ function Uninstall-LabRdsCertificate
 
     foreach ($certFile in (Get-ChildItem -File -Path (Join-Path -Path $lab.LabPath -ChildPath Certificates) -Filter *.cer -ErrorAction SilentlyContinue))
     {
-        $cert = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2
-        $cert.Import($certFile.FullName)
+        $cert = New-Object -TypeName System.Security.Cryptography.X509Certificates.X509Certificate2 -ArgumentList $certFile.FullName
+
         if ($cert.Thumbprint)
         {
             Get-Item -Path ('Cert:\LocalMachine\Root\{0}' -f $cert.Thumbprint) | Remove-Item
