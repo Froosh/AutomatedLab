@@ -495,7 +495,7 @@ function Update-LabIsoImage
     $patches = Get-ChildItem -Path $UpdateFolderPath\* -Include *.msu, *.cab
     Write-PSFMessage -Level Host -Message "Found $($patches.Count) patches in the UpdateFolderPath '$UpdateFolderPath'"
 
-    Write-PSFMessage -Level Host -Message "Mounting Windows Image '$($windowsImage.ImagePath)' to folder "
+    Write-PSFMessage -Level Host -Message "Mounting Windows Image '$($windowsImage.ImagePath)' to folder '$mountTempFolder'"
     Mount-WindowsImage -Path $mountTempFolder -ImagePath $windowsImage.ImagePath -Index 1
 
     Write-PSFMessage -Level Host -Message "Adding patches to the mounted Windows Image. This can take quite some time..."
