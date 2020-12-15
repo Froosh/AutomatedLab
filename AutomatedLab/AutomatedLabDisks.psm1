@@ -404,7 +404,7 @@ function Update-LabIsoImage
 
         if($image)
         {
-            $source = Join-Path -Path ([IO.DriveInfo][string]$image.DriveLetter).Name -ChildPath '*'
+            $source = Join-Path -Path ([IO.DriveInfo][string]($image.DriveLetter)).Name -ChildPath '*'
 
             Write-PSFMessage -Message "Extracting ISO image '$source' to '$OutputPath'"
             Copy-Item -Path $source -Destination $OutputPath -Recurse -Force
